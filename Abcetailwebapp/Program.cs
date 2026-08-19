@@ -1,10 +1,22 @@
+using Abcetailwebapp.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddScoped<AzureTableService>();
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddSingleton<Abcetailwebapp.Services.AzureStorageService>();
+builder.Services.AddSingleton<Abcetailwebapp.Services.AzureTableService>();
+builder.Services.AddSingleton<Abcetailwebapp.Services.AzureBlobService>();
+builder.Services.AddSingleton<Abcetailwebapp.Services.AzureQueueService>();
+builder.Services.AddSingleton<Abcetailwebapp.Services.AzureFileService>();
 var app = builder.Build();
-
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var azureTableService = services.GetRequiredService<Abcetailwebapp.Services.AzureTableService>();
+    await azureTableService.CreateTablesAsync();
+}
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

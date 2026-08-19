@@ -4,6 +4,14 @@
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>cbbe49ad-2361-4052-af0c-bb7afbdc86ad</UserSecretsId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Azure.Data.Tables" Version="12.11.0" />
+    <PackageReference Include="Azure.Storage.Blobs" Version="12.29.1" />
+    <PackageReference Include="Azure.Storage.Files.Shares" Version="12.27.1" />
+    <PackageReference Include="Azure.Storage.Queues" Version="12.27.1" />
+  </ItemGroup>
 
 </Project>

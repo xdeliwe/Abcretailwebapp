@@ -1,0 +1,20 @@
+﻿using Azure;
+using Azure.Data.Tables;
+namespace Abcetailwebapp.Models
+{
+    public class Customer: ITableEntity
+    {
+        public string PartitionKey { get; set; } = "Customer";
+        public string RowKey { get; set; } = Guid.NewGuid().ToString();
+        public DateTimeOffset? Timestamp { get; set; }
+        public ETag ETag { get; set; } = ETag.All;
+        public string CustomerId { get; set; }= Guid.NewGuid().ToString();
+        public string FirstName { get; set; } = string.Empty;
+        public string LastName { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
+        public string PhoneNumber { get; set; } = string.Empty;
+        
+        
+        
+    }
+}

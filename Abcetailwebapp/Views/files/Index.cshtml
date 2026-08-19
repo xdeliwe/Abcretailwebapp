@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewData["Title"]= "File Storage";
+}
+<h1>Azure File Storage</h1>
+@if(TempData["SuccessMessage"]!= null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+<form asp-controller="Files" asp-action="Upload" method="post" enctype="multipart/form-data">
+    <div class="form-group mb-3">
+        <label for="file">Select File</label>
+        <input type="file" id="file" name="file" class="form-control" required/>
+    </div>
+    <button type="submit" class="btn btn-primary">
+        Upload File
+    </button>
+</form>
